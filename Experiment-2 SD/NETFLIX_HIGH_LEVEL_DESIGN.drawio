@@ -1,0 +1,141 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0">
+  <diagram id="netflix-hld" name="Netflix HLD">
+    <mxGraphModel dx="1585" dy="2012" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=26;fontStyle=1;align=center;verticalAlign=middle" value="NETFLIX - HIGH LEVEL DESIGN" vertex="1">
+          <mxGeometry height="50" width="600" x="452" y="-30" as="geometry" />
+        </mxCell>
+        <mxCell id="reqBox" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1" value="" vertex="1">
+          <mxGeometry height="359" width="430" x="30" y="51" as="geometry" />
+        </mxCell>
+        <mxCell id="reqTitle" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=18;fontStyle=1" value="1. REQUIREMENTS" vertex="1">
+          <mxGeometry height="40" width="390" x="50" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="req" parent="1" style="text;html=1;align=left;verticalAlign=top;spacing=10;fontSize=13" value="&lt;b&gt;Functional&lt;/b&gt;&lt;br&gt;• User signup / login / profiles&lt;br&gt;• Browse movies &amp;amp; TV shows&lt;br&gt;• Search and recommendations&lt;br&gt;• Play / pause / seek video&lt;br&gt;• Adaptive video streaming&lt;br&gt;• Continue watching &amp;amp; watch history&lt;br&gt;• Ratings / My List&lt;br&gt;• Subscription &amp;amp; payment&lt;br&gt;• Content management for admins&lt;br&gt;&lt;br&gt;&lt;b&gt;Non-Functional&lt;/b&gt;&lt;br&gt;• High availability &amp;amp; fault tolerance&lt;br&gt;• Low playback startup latency&lt;br&gt;• Massive scalability&lt;br&gt;• Secure DRM &amp;amp; encrypted delivery&lt;br&gt;• Global performance / CDN&lt;br&gt;• Durability &amp;amp; observability" vertex="1">
+          <mxGeometry height="220" width="380" x="60" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="estBox" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1" value="" vertex="1">
+          <mxGeometry height="359" width="430" x="480" y="51" as="geometry" />
+        </mxCell>
+        <mxCell id="estTitle" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1" value="2. BACK-OF-THE-ENVELOPE ESTIMATION" vertex="1">
+          <mxGeometry height="40" width="390" x="505" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="est" parent="1" style="text;html=1;align=left;verticalAlign=top;spacing=10;fontSize=13" value="Assumptions (illustrative):&lt;br&gt;• 300M registered users&lt;br&gt;• 100M daily active users&lt;br&gt;• 20M concurrent viewers at peak&lt;br&gt;• Avg. session = 90 min&lt;br&gt;• Avg. encoded bitrate = 5 Mbps&lt;br&gt;• Metadata / API request ≈ 1 KB&lt;br&gt;&lt;br&gt;&lt;b&gt;Peak API traffic&lt;/b&gt;&lt;br&gt;100M DAU × 20 requests/day ≈ 2B req/day&lt;br&gt;≈ 23K req/s average; assume 5× peak ≈ &lt;b&gt;115K req/s&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Peak video egress&lt;/b&gt;&lt;br&gt;20M × 5 Mbps ≈ &lt;b&gt;100 Tbps&lt;/b&gt; aggregate at peak&lt;br&gt;CDN is therefore essential; origin should not serve viewers directly." vertex="1">
+          <mxGeometry height="220" width="380" x="505" y="120.5" as="geometry" />
+        </mxCell>
+        <mxCell id="compBox" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1" value="" vertex="1">
+          <mxGeometry height="300" width="544" x="930" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="compTitle" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=18;fontStyle=1" value="3. COMPONENTS USED" vertex="1">
+          <mxGeometry height="40" width="499" x="952.5" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="components" parent="1" style="text;html=1;align=left;verticalAlign=top;spacing=10;fontSize=13" value="&lt;b&gt;Edge / Client&lt;/b&gt;: Mobile, Web, Smart TV, Game Console&lt;br&gt;&lt;b&gt;Traffic&lt;/b&gt;: DNS / Global Load Balancer / API Gateway&lt;br&gt;&lt;b&gt;Services&lt;/b&gt;: Auth, User/Profile, Catalog, Search, Recommendation, Playback, Subscription&lt;br&gt;&lt;b&gt;Data&lt;/b&gt;: SQL/NoSQL DBs, Redis Cache, Search Index, Object Storage&lt;br&gt;&lt;b&gt;Streaming&lt;/b&gt;: Video Ingest → Transcoding → Packaging/DRM → Origin → CDN&lt;br&gt;&lt;b&gt;Async&lt;/b&gt;: Kafka/Event Bus + Workers&lt;br&gt;&lt;b&gt;Observability&lt;/b&gt;: Metrics, Logs, Tracing, Alerts&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;: TLS, IAM, DRM, tokenized playback URLs" vertex="1">
+          <mxGeometry height="220" width="531" x="936.5" y="164" as="geometry" />
+        </mxCell>
+        <mxCell id="archTitle" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=18;fontStyle=1" value="4. FLOW &amp; CONNECTIONS — REQUEST + VIDEO PLAYBACK PATH" vertex="1">
+          <mxGeometry height="45" width="1444" x="30" y="425" as="geometry" />
+        </mxCell>
+        <mxCell id="client" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" value="CLIENTS&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Web / Mobile / TV&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="170" x="30" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="dns" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" value="GLOBAL DNS / LOAD BALANCER" vertex="1">
+          <mxGeometry height="70" width="210" x="243" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="api" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1" value="API GATEWAY&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Auth • Rate Limit • Routing&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="210" x="493" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="services" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" value="MICROSERVICES&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Auth | Profile | Catalog | Search | Recommendation | Subscription | Playback&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="300" x="730" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="cache" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" value="REDIS CACHE&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Sessions • Hot metadata • Recommendations&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="190" x="1076" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="db" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" value="DATA STORES&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;SQL/NoSQL • Search Index • User/Content metadata&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="170" x="1304" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="play" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" value="PLAYBACK SERVICE&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Authorize + return manifest/token&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="220" x="180" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="origin" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1" value="ORIGIN STORAGE&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Encoded video segments + manifests&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="220" x="490" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="cdn" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1" value="GLOBAL CDN&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Edge cache serves video close to users&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="220" x="800" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="player" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" value="VIDEO PLAYER&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Adaptive bitrate: 4K / 1080p / 720p / 480p&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="250" x="1110" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="ingest" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1" value="CONTENT INGEST" vertex="1">
+          <mxGeometry height="65" width="180" x="121" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="transcode" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1" value="TRANSCODING CLUSTER&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Multiple resolutions / codecs&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="230" x="347" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="pack" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1" value="PACKAGING + DRM&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;HLS/DASH • encryption • license integration&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="250" x="611" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="events" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" value="EVENT BUS / KAFKA&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Playback events • watch history • analytics&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="250" x="953" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="analytics" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" value="ANALYTICS / ML&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Recommendations • experiments • business metrics&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="180" x="1294" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="client" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block" target="dns">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="dns" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block" target="api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block" target="services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="services" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block" target="cache">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="services" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="client" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block" target="play">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="play" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block" target="origin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="origin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block" target="cdn">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="cdn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block" target="player">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="ingest" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block" target="transcode">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="transcode" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block" target="pack">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="pack" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block" target="origin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="player" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block" target="events">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="events" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block" target="analytics">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="events" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block" target="services">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1078.08" y="604.31" />
+              <mxPoint x="880.08" y="604.31" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=13;align=left;spacing=10" value="&lt;b&gt;Flow:&lt;/b&gt; Client → Global LB → API Gateway → Microservices → Cache/DB. For playback, client gets authorization/manifest from Playback Service, then video segments are delivered primarily through CDN. Content follows Ingest → Transcode → Package/DRM → Origin → CDN. Playback events flow asynchronously through Kafka to analytics/ML." vertex="1">
+          <mxGeometry height="60" width="1424" x="40" y="911" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
